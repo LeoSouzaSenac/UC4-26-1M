@@ -122,16 +122,19 @@ O arquivo gerado pode ter muitas opções. Para esta aula, **substitua todo o co
 ```json
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
     "rootDir": "./src",
     "outDir": "./dist",
+    "module": "nodenext",
+    "target": "esnext",
+    "types": ["node"],
     "strict": false,
-    "noEmitOnError": true,
-    "types": ["node"]
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src"]
 }
+
 ```
 
 Essa configuração foi escolhida para um programa de terminal executado com uma versão recente do Node.js.
@@ -141,7 +144,7 @@ Essa configuração foi escolhida para um programa de terminal executado com uma
 | Opção | Explicação simples |
 | --- | --- |
 | `compilerOptions` | Agrupa as configurações do compilador. |
-| `target: "ES2022"` | Define a versão de JavaScript que será gerada. Não é a versão do TypeScript. |
+| `target: "NODENEXT"` | Define a versão de JavaScript que será gerada. Não é a versão do TypeScript. |
 | `module: "NodeNext"` | Faz o TypeScript seguir as regras de módulos do Node.js. Módulos permitem dividir código entre arquivos. |
 | `rootDir: "./src"` | Indica a pasta-base dos nossos arquivos de código. |
 | `outDir: "./build"` | Indica onde serão salvos os arquivos JavaScript gerados. |
@@ -184,7 +187,7 @@ Abra `package.json` e encontre a parte `"scripts"`. Substitua esse bloco por:
 
 ```json
 "scripts": {
-  "start": "npx tsc && node ./build/index.js"
+  "start": "npx tsc && node ./dist/index.js"
 }
 ```
 
@@ -202,7 +205,7 @@ Um `package.json` mínimo, antes de instalar os pacotes, poderia ser:
   "type": "commonjs",
   "description": "Projeto para aprender TypeScript",
   "scripts": {
-    "start": "npx tsc && node ./build/index.js"
+    "start": "npx tsc && node ./dist/index.js"
   }
 }
 ```
@@ -330,11 +333,6 @@ O `npm start` tem uma forma curta própria. Para os nomes personalizados, use `n
 4. Troque temporariamente `80` por `"oitenta"`, mantendo o tipo `number`.
 5. Execute e observe o erro de tipo.
 6. Corrija o valor e execute novamente.
-
-## Referências
-
-Material-base: *Aula #4 - Aprofundamento em TypeScript*, Prof. Vitor Hugo Lopes. A organização em `src` e as explicações foram desenvolvidas para esta sequência.
-
 - [Documentação oficial: configuração do TypeScript](https://www.typescriptlang.org/pt/tsconfig/)
 - [Documentação oficial: criação do package.json](https://docs.npmjs.com/creating-a-package-json-file/)
 
