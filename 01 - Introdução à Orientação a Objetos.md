@@ -7,7 +7,7 @@
 - Como reconhecer objetos, atributos e métodos.
 - Qual é a diferença entre uma classe e um objeto.
 
-Não é necessário decorar todos os nomes agora. Primeiro, procure entender os exemplos.
+Não é necessário decorar todos os nomes agora, fique tranquilo. Primeiro, procure entender os exemplos.
 
 ## 1. O que é um paradigma?
 
@@ -29,7 +29,7 @@ Essas explicações são um primeiro contato. Cada forma tem outros detalhes que
 
 ## 2. Um problema simples: cuidar de um animal
 
-Vamos imaginar um jogo no qual o jogador cuida de animais.
+Vamos imaginar um jogo em que você tem que cuidar de animais num zoológico.
 
 Cada animal precisa ter algumas informações:
 
@@ -47,11 +47,11 @@ Na orientação a objetos, podemos reunir as informações e as ações de cada 
 
 ## 3. O que é exatamente orientação a objetos?
 
-**Programação orientada a objetos (POO) é uma forma de organizar o código usando objetos que reúnem dados e ações relacionadas.**
+**Programação orientada a objetos (POO) é uma forma de organizar o código usando objetos que reúnem dados/atributos (as coisas que aquele objeto tem) e ações/métodos (as coisas que aquele objeto faz).**
 
 Um objeto representa algo que importa para o programa. Pode ser um animal, um aluno, uma conta bancária, um produto ou um personagem.
 
-Também pode representar algo que não conseguimos tocar, como uma reserva ou uma partida de um jogo.
+Também pode representar algo que pode ser mais "abstrato", como uma reserva ou uma partida de um jogo.
 
 No nosso exemplo:
 
