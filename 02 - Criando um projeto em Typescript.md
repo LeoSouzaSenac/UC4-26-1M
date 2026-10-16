@@ -125,8 +125,8 @@ O arquivo gerado pode ter muitas opções. Para esta aula, **substitua todo o co
     "target": "ES2022",
     "module": "NodeNext",
     "rootDir": "./src",
-    "outDir": "./build",
-    "strict": true,
+    "outDir": "./dist",
+    "strict": false,
     "noEmitOnError": true,
     "types": ["node"]
   },
