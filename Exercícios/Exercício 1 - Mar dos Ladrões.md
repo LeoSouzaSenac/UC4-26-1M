@@ -1,138 +1,139 @@
-# Polimorfismo em TypeScript
+# 🏴‍☠️ O Mar dos Ladrões — Herança, Encapsulamento e Polimorfismo em TypeScript
 
-## 📌 O que é Polimorfismo?
+## 1. Contexto
 
-O termo **polimorfismo** significa **“muitas formas”**.
-Na **Programação Orientada a Objetos (POO)**, polimorfismo é a capacidade de objetos de diferentes classes (que têm um **mesmo ancestral**) responderem de maneiras diferentes ao **mesmo método**.
+O Mar dos Ladrões é um mundo repleto de ilhas, tesouros escondidos, batalhas navais e tripulações piratas. Nesse cenário, você deverá desenvolver um sistema em TypeScript para representar diferentes tipos de navios piratas.
 
-👉 Ou seja, **o mesmo método** pode ter **diferentes implementações**, dependendo da classe que o chama.
+Cada navio possui características próprias, como capacidade de tripulação, velocidade e resistência, além de comportamentos que o diferenciam dos demais.
 
----
+O objetivo é utilizar os conceitos de **herança, encapsulamento e polimorfismo** para construir um sistema organizado, reutilizável e que represente as diferenças entre os navios.
 
-## 📌 Exemplo 1:
+## 2. Classe `Navio`
 
-```typescript
-// Classe base
-export class Animal {
-    falar(): void {
-        console.log("O animal faz um som.");
-    }
-}
+Crie uma classe chamada `Navio`, que será a classe principal do sistema. Ela deverá possuir as seguintes propriedades:
 
-// Subclasses sobrescrevendo o método falar
-export class Cachorro extends Animal {
-    falar(): void {
-        console.log("O cachorro late");
-    }
-}
+- `nome`: nome do navio.
+- `capacidadeTripulacao`: quantidade máxima de tripulantes.
+- `vida`: quantidade atual de pontos de vida do navio.
+- `velocidade`: velocidade máxima do navio.
+- `canhoes`: quantidade de canhões disponíveis.
 
-export class Gato extends Animal {
-    falar(): void {
-        console.log("O gato mia");
-    }
-}
+Utilize modificadores de acesso adequados para proteger as propriedades e controlar como elas podem ser acessadas pelas outras classes.
 
-// Testando polimorfismo
-const animais: Animal[] = [new Cachorro(), new Gato(), new Animal()];
+A classe também deverá possuir os seguintes métodos:
 
-animais.forEach(animal => {
-    animal.falar(); 
-});
-```
+- `navegar()`: apresenta uma mensagem informando que o navio está navegando.
+- `atacar()`: apresenta uma mensagem informando que o navio está atacando com seus canhões.
+- `receberDano(dano: number)`: reduz os pontos de vida do navio de acordo com o dano recebido. A vida não poderá ficar abaixo de zero.
+- `exibirInformacoes()`: apresenta as informações principais do navio.
 
-✅ Saída:
+## 3. Classes especializadas
 
-```
-O cachorro late
-O gato mia
-O animal faz um som.
-```
+Crie três classes que herdem de `Navio`: `Bergantim`, `Chalupa` e `Galeao`.
 
-Note que o método chamado foi sempre `falar()`, mas cada classe respondeu de um jeito diferente.
+Cada classe deverá possuir características e comportamentos próprios.
 
----
+### 3.1. Classe `Bergantim`
 
-## 📌 Exemplo 2:
-```typescript
-// Classe base
-export class Funcionario {
-    calcularSalario(): number {
-        return 1000; // salário base
-    }
-}
+O bergantim é um navio equilibrado, adequado para explorar os mares e enfrentar outros piratas.
 
-// Subclasse: Desenvolvedor
-export class Desenvolvedor extends Funcionario {
-    calcularSalario(): number {
-        return 3000; // salário específico do desenvolvedor
-    }
-}
+Características:
 
-// Subclasse: Gerente
-export class Gerente extends Funcionario {
-    calcularSalario(): number {
-        return 5000; // salário específico do gerente
-    }
-}
+- Capacidade para até 20 tripulantes.
+- Velocidade alta.
+- Resistência intermediária.
+- Quantidade intermediária de canhões.
 
-// Testando polimorfismo
-const funcionarios: Funcionario[] = [
-    new Funcionario(),
-    new Desenvolvedor(),
-    new Gerente()
-];
+Comportamentos específicos:
 
-funcionarios.forEach(func => {
-    console.log(`Salário: R$ ${func.calcularSalario()}`);
-});
-```
+- Sobrescreva o método `navegar()` para apresentar uma mensagem indicando que o bergantim aproveita seus ventos favoráveis para navegar rapidamente.
+- Sobrescreva o método `atacar()` para apresentar uma mensagem indicando que o bergantim realiza uma sequência rápida de disparos.
 
-✅ Saída:
+### 3.2. Classe `Chalupa`
 
-```
-Salário: R$ 1000
-Salário: R$ 3000
-Salário: R$ 5000
-```
+A chalupa é uma embarcação pequena, ágil e ideal para explorar ilhas, fugir de inimigos e transportar pequenas tripulações.
 
----
+Características:
 
-## 📊 Comparação com e sem polimorfismo
+- Capacidade para até 10 tripulantes.
+- Velocidade muito alta.
+- Resistência baixa.
+- Poucos canhões.
 
-| Sem polimorfismo                                                                | Com polimorfismo                                                 |
-| ------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Precisamos de **muitos `if/else`** para verificar o tipo e decidir o que fazer. | Cada classe **sabe como se comportar** ao sobrescrever o método. |
-| Código difícil de manter.                                                       | Código organizado e extensível.                                  |
-| Baixa flexibilidade.                                                            | Alta flexibilidade.                                              |
+Comportamentos específicos:
 
----
+- Sobrescreva o método `navegar()` para apresentar uma mensagem indicando que a chalupa utiliza sua agilidade para realizar manobras rápidas.
+- Sobrescreva o método `atacar()` para apresentar uma mensagem indicando que a chalupa dispara seus poucos canhões e tenta escapar rapidamente.
+- Crie um método exclusivo chamado `explorarIlha()`, que apresenta uma mensagem informando que a tripulação está explorando uma ilha em busca de tesouros.
 
-## ✨ Vantagens do Polimorfismo
+### 3.3. Classe `Galeao`
 
-* Permite **usar o mesmo método** em diferentes classes com **comportamentos distintos**.
-* Facilita a **extensão do código** (novas classes podem ser adicionadas sem mudar o código existente).
-* Mantém o código **organizado e limpo**, evitando `if/else` desnecessários.
+O galeão é uma embarcação enorme, resistente e fortemente armada, ideal para batalhas navais de grande escala.
 
----
+Características:
 
-## 📝 Exercícios
+- Capacidade para até 50 tripulantes.
+- Velocidade baixa.
+- Resistência alta.
+- Grande quantidade de canhões.
 
-1. Crie uma classe `Veiculo` com um método `mover()`.
-   Depois crie as subclasses `Carro` e `Bicicleta`, cada uma sobrescrevendo o método para mostrar uma mensagem diferente.
-   Teste criando uma lista de veículos e chamando `mover()` para todos.
+Comportamentos específicos:
 
-2. Crie uma classe `Pagamento` com um método `processar()`.
-   Depois crie `CartaoCredito` e `Boleto`, cada um implementando a lógica do pagamento de forma diferente.
-   Crie um array de pagamentos e processe todos usando polimorfismo.
+- Sobrescreva o método `navegar()` para apresentar uma mensagem indicando que o galeão avança lentamente pelo mar.
+- Sobrescreva o método `atacar()` para apresentar uma mensagem indicando que o galeão dispara uma poderosa salva de canhões.
+- Crie um método exclusivo chamado `repararNavio()`, que recupera parte dos pontos de vida do galeão sem ultrapassar sua vida máxima.
 
----
+## 4. Aplicando o encapsulamento
 
-## 📌 Resumindo
+As propriedades dos navios não devem ser modificadas livremente de qualquer lugar do programa.
 
-* O **polimorfismo** permite que **métodos com o mesmo nome tenham comportamentos diferentes** em classes distintas.
-* Em TypeScript, o polimorfismo acontece principalmente por meio de **herança e sobrescrita de métodos**.
-* É um dos **4 pilares da POO**, junto com **abstração, encapsulamento e herança**.
+Utilize os modificadores `private`, `protected` e `public` de maneira adequada para controlar o acesso aos atributos e métodos.
 
----
+Implemente mecanismos para consultar ou modificar as informações necessárias, respeitando as regras do sistema.
 
-👉 Use polimorfismo quando quiser trabalhar com **objetos diferentes de forma uniforme**, mas mantendo **comportamentos específicos em cada classe**.
+Considere as seguintes regras:
+
+- A vida atual não pode ser negativa.
+- A vida atual não pode ultrapassar a vida máxima do navio.
+- O dano recebido não pode ser negativo.
+- A quantidade de canhões e a capacidade da tripulação devem respeitar os valores definidos para cada tipo de navio.
+- As classes especializadas devem conseguir acessar os atributos protegidos que forem necessários para implementar seus comportamentos.
+
+Você poderá criar propriedades e métodos adicionais caso sejam necessários para garantir essas regras.
+
+## 5. Aplicando a herança e o polimorfismo
+
+As classes `Bergantim`, `Chalupa` e `Galeao` devem herdar as características comuns da classe `Navio`, evitando a repetição desnecessária de código.
+
+Utilize a sobrescrita de métodos para implementar comportamentos específicos em cada classe.
+
+O polimorfismo deverá ser demonstrado por meio de uma coleção de navios. Essa coleção deverá permitir armazenar objetos de diferentes tipos utilizando o tipo `Navio`.
+
+Ao percorrer essa coleção e chamar os métodos `navegar()`, `atacar()` e `exibirInformacoes()`, cada objeto deverá executar o comportamento correspondente à sua própria classe.
+
+## 6. Arquivo `Main.ts`
+
+Crie um arquivo chamado `Main.ts` para testar o funcionamento de todo o sistema.
+
+Nesse arquivo, realize as seguintes operações:
+
+1. Crie pelo menos um objeto de cada tipo de navio: bergantim, chalupa e galeão.
+2. Exiba as informações de cada navio.
+3. Faça cada navio navegar e atacar, verificando as diferenças entre os comportamentos.
+4. Utilize o método `receberDano()` para simular ataques contra diferentes navios.
+5. Consulte os pontos de vida após os ataques.
+6. Utilize o método `explorarIlha()` da chalupa.
+7. Utilize o método `repararNavio()` do galeão e verifique a recuperação dos pontos de vida.
+8. Crie uma coleção do tipo `Navio[]` contendo os diferentes tipos de navios.
+9. Percorra essa coleção utilizando um laço de repetição e invoque os métodos comuns. Observe como o comportamento muda de acordo com o tipo de cada objeto.
+10. Teste situações inválidas, como aplicar dano negativo ou tentar ultrapassar a vida máxima, garantindo que as regras de encapsulamento sejam respeitadas.
+
+Organize o código em arquivos separados, mantendo cada classe em seu próprio arquivo:
+
+- `Navio.ts`
+- `Bergantim.ts`
+- `Chalupa.ts`
+- `Galeao.ts`
+- `Main.ts`
+
+Utilize os conceitos de orientação a objetos para construir um sistema que represente os diferentes navios piratas e suas particularidades no Mar dos Ladrões.
