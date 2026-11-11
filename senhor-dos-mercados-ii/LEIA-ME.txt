@@ -1,0 +1,24 @@
+O SENHOR DOS MERCADOS II — AS DUAS REDES
+=========================================
+
+SITE PRONTO PARA USAR
+1. Abra index.html no navegador.
+2. Para publicar na Vercel, Netlify ou GitHub Pages, envie os arquivos e a pasta assets.
+3. O site funciona sem servidor e sem instalação de dependências.
+
+COMO TROCAR O BANNER
+- A imagem fica em assets/banner.png.
+- Substitua esse arquivo pela imagem que quiser, mantendo o mesmo nome.
+- Ou altere a linha background-image: url('assets/banner.png') no styles.css.
+- O banner possui uma área de destaque com imagem de fundo responsiva.
+
+COMO EDITAR O TRABALHO
+- index.html: texto das missões, história, entrega e critérios.
+- styles.css: identidade visual, layout, banner e responsividade.
+- script.js: progresso das missões, menu mobile e botões de copiar.
+
+OBSERVAÇÕES
+- As 8 missões são um enunciado de trabalho, sem entregar a solução aos alunos.
+- As marcações de conclusão são salvas apenas no navegador de quem as marcou.
+- Fontes usam Google Fonts, com fontes alternativas caso não haja internet.
+- O professor pode definir data e modalidade de entrega como quiser no HTML.
